@@ -1,0 +1,20 @@
+Package: BirdTraitsR
+Type: Package
+Title: Tools for Bird Ecology and Conservation Analysis
+Version: 0.1.0
+Authors@R: person("Surya", "Pratap Singh",
+    email = "ysuraj216@gmail.com",
+    role = c("aut", "cre"))
+Description: Open-source tools for bird ecology, bird trait analysis,
+    biodiversity assessment, community ecology, conservation planning,
+    ecological visualization and reporting.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0
+Imports:
+    ggplot2,
+    stats,
+    vegan,
+    rlang
