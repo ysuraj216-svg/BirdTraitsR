@@ -20,7 +20,11 @@ by species in a community.
 }
 \details{
 Functional richness represents the extent of trait space occupied by the
-community. Higher values indicate greater trait diversity.
+community. Higher values indicate greater trait diversity. Traits are
+standardized (z-score: mean 0, sd 1) before computing range, so that
+traits measured on different scales (e.g. mass in grams vs wing length
+in cm) can be compared on equal footing without one trait's range
+dominating the result.
 }
 \examples{
 birds <- data.frame(
