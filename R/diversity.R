@@ -226,7 +226,7 @@ bt_relative_abundance <- function(
     
     Relative_Abundance =
       round(
-        100 * counts / sum(counts),
+        as.numeric(100 * counts / sum(counts)),
         2
       ),
     

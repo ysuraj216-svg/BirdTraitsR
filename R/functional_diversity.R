@@ -21,7 +21,11 @@
 #'
 #' @details
 #' Functional richness represents the extent of trait space occupied by the
-#' community. Higher values indicate greater trait diversity.
+#' community. Higher values indicate greater trait diversity. Traits are
+#' standardized (z-score: mean 0, sd 1) before computing range, so that
+#' traits measured on different scales (e.g. mass in grams vs wing length
+#' in cm) can be compared on equal footing without one trait's range
+#' dominating the result.
 #'
 #' @examples
 #' birds <- data.frame(
@@ -65,13 +69,17 @@ bt_functional_richness <- function(
   # Remove rows with missing values
   trait_data <- stats::na.omit(trait_data)
   
-  # Standardize traits (scale to 0-1)
+  # Standardize traits using z-scores (mean 0, sd 1). Min-max scaling to
+  # 0-1 would force every column's range to exactly 1, making the product
+  # meaningless - z-scoring keeps traits comparable while preserving
+  # genuine differences in spread between traits.
   trait_scaled <- as.data.frame(
-    sapply(trait_data, function(x) (x - min(x)) / (max(x) - min(x)))
+    sapply(trait_data, function(x) as.numeric(scale(x)))
   )
   
   # Calculate convex hull volume using number of dimensions
-  # Simplified: FRic is approximated as the range of each trait dimension
+  # Simplified: FRic is approximated as the product of standardized
+  # trait ranges (a proxy for trait-space hypervolume).
   fric <- prod(sapply(trait_scaled, function(x) max(x) - min(x)))
   
   as.numeric(fric)

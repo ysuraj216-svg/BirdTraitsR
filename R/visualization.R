@@ -399,8 +399,8 @@ bt_plot_histogram <- function(
       
       data,
       
-      ggplot2::aes_string(
-        x = variable
+      ggplot2::aes(
+        x = .data[[variable]]
       )
       
     ) +
@@ -1311,5 +1311,4 @@ bt_plot_violin <- function(
           face = "bold"
         )
     )
-  
 }
