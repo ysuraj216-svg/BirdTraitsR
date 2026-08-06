@@ -1,1 +1,11 @@
-
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "BirdTraitsR"
+version: 0.1.0
+authors:
+  - family-names: "Singh"
+    given-names: "Surya Pratap"
+    email: "ysuraj216@gmail.com"
+repository-code: "https://github.com/ysuraj216-svg/BirdTraitsR"
+license: MIT
+date-released: 2026-08-06
