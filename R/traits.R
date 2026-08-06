@@ -175,6 +175,17 @@ bt_trait_levels <- function(data,trait){
   
   bt_check_dataframe(data)
   
+  if(!trait %in% names(data)){
+    stop(
+      paste0(
+        "Column '",
+        trait,
+        "' not found."
+      ),
+      call. = FALSE
+    )
+  }
+  
   sort(
     unique(
       data[[trait]]
@@ -201,6 +212,17 @@ bt_trait_levels <- function(data,trait){
 bt_trait_missing <- function(data,trait){
   
   bt_check_dataframe(data)
+  
+  if(!trait %in% names(data)){
+    stop(
+      paste0(
+        "Column '",
+        trait,
+        "' not found."
+      ),
+      call. = FALSE
+    )
+  }
   
   sum(
     is.na(
